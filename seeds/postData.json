@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Celebrity Junk",
+    "description": "Hollywood A-Listers attend opening of a new studio.",
+    "post_ranking": 1
+  },
+  {
+    "name": "Real-Estate 101",
+    "description": "The housing market will crash in 60 days!",
+    "post_ranking": 2
+  },
+  {
+    "name": "Money Matters",
+    "description": "US Dept of Education announced that student loans will resume!",
+    "post_ranking": 3
+  }
+]
