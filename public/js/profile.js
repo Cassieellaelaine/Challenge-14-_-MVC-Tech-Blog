@@ -1,11 +1,13 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const postName = document.querySelector('#post-name').value.trim();
-  const postRanking = document.querySelector('#post-ranking').value.trim();
-   const postDescription = document.querySelector('#post-desc').value.trim();
+  const postName = document.querySelector('#post-name').value.trim()
+  const postRanking = document.querySelector('#post-ranking').value.trim()
+  const postDescription = document.querySelector('#post-desc').innerText.trim()
 
-  if (postName && postDescription) {
+  console.log(postName, postRanking, postDescription)
+
+  if (postName && postRanking && postDescription) {
     const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({ postName, postRanking, postDescription }),
@@ -22,26 +24,8 @@ const newFormHandler = async (event) => {
   }
 };
 
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/posts/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Could NOT delete post');
-    }
-  }
-};
-
 document
-  .querySelector('.new-post-form')
+  .querySelector('#submit-btn')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.post-list')
-  .addEventListener('click', delButtonHandler);
+
