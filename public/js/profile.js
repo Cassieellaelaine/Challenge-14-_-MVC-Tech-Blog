@@ -3,21 +3,21 @@ const newFormHandler = async (event) => {
 
   const postName = document.querySelector('#post-name').value.trim()
   const postRanking = document.querySelector('#post-ranking').value.trim()
-  const postDescription = document.querySelector('#post-desc').innerText.trim()
+  const postDescription = document.querySelector('#post-desc').value.trim()
 
   console.log(postName, postRanking, postDescription)
 
   if (postName && postRanking && postDescription) {
     const response = await fetch(`/api/posts`, {
       method: 'POST',
-      body: JSON.stringify({ postName, postRanking, postDescription }),
+      body: JSON.stringify({name:postName, post_ranking:postRanking, description:postDescription }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+    document.location.reload();
     } else {
       alert('Could NOT create post');
     }
@@ -25,7 +25,7 @@ const newFormHandler = async (event) => {
 };
 
 document
-  .querySelector('#submit-btn')
+  .querySelector('#new-post-form')
   .addEventListener('submit', newFormHandler);
 
 
